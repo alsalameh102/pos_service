@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox id="clocker" alignment="CENTER" prefHeight="332.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CashierClockerController">
+   <children>
+      <GridPane prefHeight="400.0" prefWidth="483.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane hgap="10.0" vgap="10.0" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnClockIn" onAction="#clockInBtnAction" mnemonicParsing="false" prefHeight="68.0" prefWidth="237.0" text="Clock In" />
+                  <Button fx:id="btnLeave" onAction="#leaveBrkBtnAction" mnemonicParsing="false" prefHeight="68.0" prefWidth="237.0" text="Leave for Break" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane hgap="10.0" vgap="10.0" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnClockout" onAction="#clockOutBtnAction" mnemonicParsing="false" prefHeight="68.0" prefWidth="237.0" text="Clock Out" />
+                  <Button fx:id="btnBack" onAction="#backBrkBtnAction" mnemonicParsing="false" prefHeight="68.0" prefWidth="237.0" text="Back from Break" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnEmergency" onAction="#emergencyBtnAction" mnemonicParsing="false" prefHeight="36.0" prefWidth="190.0" text="Emergency Clockout" GridPane.rowIndex="1" />
+                  <Button fx:id="btnCancel" onAction="#cancelBtnAction" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="190.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <Label fx:id="lblTimestamp" text="Current Time" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="Calibri Light" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</HBox>

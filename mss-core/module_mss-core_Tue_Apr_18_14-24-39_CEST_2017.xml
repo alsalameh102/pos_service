@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_mss-core" default="compile.module.mss-core">
+  <dirname property="module.mss-core.basedir" file="${ant.file.module_mss-core}"/>
+  
+  <property name="module.jdk.home.mss-core" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.mss-core" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.mss-core" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.mss-core" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="mss-core.output.dir" value="${module.mss-core.basedir}/target/classes"/>
+  <property name="mss-core.testoutput.dir" value="${module.mss-core.basedir}/target/test-classes"/>
+  
+  <path id="mss-core.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="mss-core.module.production.classpath">
+    <path refid="${module.jdk.classpath.mss-core}"/>
+    <path refid="library.maven:_com.google.guava:guava:15.0.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-transports-http:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-api:2.7.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.2.0.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.1.classpath"/>
+    <path refid="library.maven:_org.apache.ws.xmlschema:xmlschema-core:2.0.3.classpath"/>
+    <path refid="library.maven:_wsdl4j:wsdl4j:1.6.3.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-core:2.7.5.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.1.13.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxws:2.7.5.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.2.classpath"/>
+    <path refid="library.maven:_asm:asm:3.3.1.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-soap:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-databinding-jaxb:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-simple:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-addr:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-policy:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.neethi:neethi:3.0.2.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxrs:2.7.5.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0-m10.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-xml:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.3.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.2.4.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.8.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.2.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.13.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_net.sf.appstatus:appstatus-core:0.4.4.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.3.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.3.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+  </path>
+  
+  <path id="mss-core.runtime.production.module.classpath">
+    <pathelement location="${mss-core.output.dir}"/>
+    <path refid="library.maven:_com.google.guava:guava:15.0.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-transports-http:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-api:2.7.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.2.0.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.1.classpath"/>
+    <path refid="library.maven:_org.apache.ws.xmlschema:xmlschema-core:2.0.3.classpath"/>
+    <path refid="library.maven:_wsdl4j:wsdl4j:1.6.3.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-core:2.7.5.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.1.13.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxws:2.7.5.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.2.classpath"/>
+    <path refid="library.maven:_asm:asm:3.3.1.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-soap:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-databinding-jaxb:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-simple:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-addr:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-policy:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.neethi:neethi:3.0.2.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxrs:2.7.5.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0-m10.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-xml:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.3.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.2.4.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.8.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.2.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.13.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_net.sf.appstatus:appstatus-core:0.4.4.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="mss-core.module.classpath">
+    <path refid="${module.jdk.classpath.mss-core}"/>
+    <pathelement location="${mss-core.output.dir}"/>
+    <path refid="library.maven:_com.google.guava:guava:15.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-transports-http:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-api:2.7.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.2.0.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.1.classpath"/>
+    <path refid="library.maven:_org.apache.ws.xmlschema:xmlschema-core:2.0.3.classpath"/>
+    <path refid="library.maven:_wsdl4j:wsdl4j:1.6.3.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-core:2.7.5.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.1.13.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxws:2.7.5.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.2.classpath"/>
+    <path refid="library.maven:_asm:asm:3.3.1.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-soap:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-databinding-jaxb:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-simple:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-addr:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-policy:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.neethi:neethi:3.0.2.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxrs:2.7.5.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0-m10.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-xml:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.3.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.2.4.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.8.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.2.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.13.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_net.sf.appstatus:appstatus-core:0.4.4.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.3.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.3.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.3.release.classpath"/>
+    <path refid="library.maven:_c3p0:c3p0:0.9.1.2.classpath"/>
+    <pathelement location="${mss-auth-hsql.testoutput.dir}"/>
+    <pathelement location="${mss-auth-hsql.output.dir}"/>
+    <path refid="library.maven:_org.hsqldb:hsqldb:2.3.0.classpath"/>
+    <path refid="library.maven:_org.unitils:unitils-mock:3.3.classpath"/>
+    <path refid="library.maven:_org.unitils:unitils-core:3.3.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.3.classpath"/>
+    <path refid="library.maven:_ognl:ognl:2.6.9.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+  </path>
+  
+  <path id="mss-core.runtime.module.classpath">
+    <pathelement location="${mss-core.testoutput.dir}"/>
+    <pathelement location="${mss-core.output.dir}"/>
+    <path refid="library.maven:_com.google.guava:guava:15.0.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-transports-http:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-api:2.7.5.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.2.0.classpath"/>
+    <path refid="library.maven:_org.codehaus.woodstox:stax2-api:3.1.1.classpath"/>
+    <path refid="library.maven:_org.apache.ws.xmlschema:xmlschema-core:2.0.3.classpath"/>
+    <path refid="library.maven:_wsdl4j:wsdl4j:1.6.3.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-core:2.7.5.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.1.13.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxws:2.7.5.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.2.classpath"/>
+    <path refid="library.maven:_asm:asm:3.3.1.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-soap:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-databinding-jaxb:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-simple:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-addr:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-ws-policy:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.neethi:neethi:3.0.2.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-frontend-jaxrs:2.7.5.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0-m10.classpath"/>
+    <path refid="library.maven:_org.apache.cxf:cxf-rt-bindings-xml:2.7.5.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.3.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.2.5.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.2.4.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.8.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.2.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.13.classpath"/>
+    <path refid="library.maven:_org.json:json:20090211.classpath"/>
+    <path refid="library.maven:_net.sf.appstatus:appstatus-core:0.4.4.classpath"/>
+    <path refid="library.maven:_commons-collections:commons-collections:3.2.1.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.3.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.3.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:servlet-api:2.5.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:3.2.3.release.classpath"/>
+    <path refid="library.maven:_c3p0:c3p0:0.9.1.2.classpath"/>
+    <path refid="mss-auth-hsql.runtime.module.classpath"/>
+    <path refid="library.maven:_org.hsqldb:hsqldb:2.3.0.classpath"/>
+    <path refid="library.maven:_org.unitils:unitils-mock:3.3.classpath"/>
+    <path refid="library.maven:_org.unitils:unitils-core:3.3.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.3.classpath"/>
+    <path refid="library.maven:_ognl:ognl:2.6.9.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.9.5.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.mss-core">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.mss-core">
+    <patternset refid="excluded.from.module.mss-core"/>
+  </patternset>
+  
+  <path id="mss-core.module.sourcepath">
+    <dirset dir="${module.mss-core.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="mss-core.module.test.sourcepath">
+    <dirset dir="${module.mss-core.basedir}">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.mss-core" depends="compile.module.mss-core.production,compile.module.mss-core.tests" description="Compile module mss-core"/>
+  
+  <target name="compile.module.mss-core.production" depends="register.custom.compilers,compile.module.mss-auth-hsql" description="Compile module mss-core; production classes">
+    <mkdir dir="${mss-core.output.dir}"/>
+    <javac2 destdir="${mss-core.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mss-core}/javac">
+      <compilerarg line="${compiler.args.mss-core}"/>
+      <bootclasspath refid="mss-core.module.bootclasspath"/>
+      <classpath refid="mss-core.module.production.classpath"/>
+      <src refid="mss-core.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mss-core"/>
+    </javac2>
+    
+    <copy todir="${mss-core.output.dir}">
+      <fileset dir="${module.mss-core.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.mss-core.tests" depends="register.custom.compilers,compile.module.mss-core.production" description="compile module mss-core; test classes" unless="skip.tests">
+    <mkdir dir="${mss-core.testoutput.dir}"/>
+    <javac2 destdir="${mss-core.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mss-core}/javac">
+      <compilerarg line="${compiler.args.mss-core}"/>
+      <bootclasspath refid="mss-core.module.bootclasspath"/>
+      <classpath refid="mss-core.module.classpath"/>
+      <src refid="mss-core.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mss-core"/>
+    </javac2>
+    
+    <copy todir="${mss-core.testoutput.dir}">
+      <fileset dir="${module.mss-core.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.mss-core.basedir}/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.mss-core" description="cleanup module">
+    <delete dir="${mss-core.output.dir}"/>
+    <delete dir="${mss-core.testoutput.dir}"/>
+  </target>
+</project>

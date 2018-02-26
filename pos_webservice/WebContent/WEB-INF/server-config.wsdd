@@ -1,0 +1,127 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\etdelacruz\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\pos_webservice\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="PosGW_Port" provider="java:RPC" style="document" use="literal">
+  <ns1:parameter name="allowedMethods" value="*"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="PosGW_PortType"/>
+  <ns1:parameter name="className" value="com.pos.satlujwe.PosGW.PosGW_BindingSkeleton"/>
+  <ns1:parameter name="wsdlServicePort" value="PosGW_Port"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://satlujwe.pos.com/PosGW"/>
+  <ns1:parameter name="wsdlServiceElement" value="PosGW"/>
+  <ns1:parameter name="schemaUnqualified" value="http://satlujwe.pos.com/PosGW"/>
+  <ns2:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns1:&gt;GetEntryRJRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetEntryRJRequest" xmlns:ns1="http://satlujwe.pos.com/PosGW" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns2:&gt;GetHeldTRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetHeldTRequest" xmlns:ns2="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:&gt;ChangeSettingRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.ChangeSettingRequest" xmlns:ns3="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:&gt;MakeSaleResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.MakeSaleResponse" xmlns:ns4="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:&gt;GetAllSettingsRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetAllSettingsRequest" xmlns:ns5="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:&gt;CheckExistingHeldTResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CheckExistingHeldTResponse" xmlns:ns6="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns7:&gt;UpdateBRRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.UpdateBRRequest" xmlns:ns7="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns8:PosGWHoldItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWHoldItem" xmlns:ns8="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:&gt;InsertHeldItemRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertHeldItemRequest" xmlns:ns9="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:PosGWProduct" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWProduct" xmlns:ns10="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns11:&gt;VoidInvoiceResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.VoidInvoiceResponse" xmlns:ns11="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:PosGWSoldItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWSoldItem" xmlns:ns12="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns13:&gt;CheckUserResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CheckUserResponse" xmlns:ns13="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:&gt;UpdateInventoryResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.UpdateInventoryResponse" xmlns:ns14="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:&gt;CreateTKRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CreateTKRequest" xmlns:ns15="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:&gt;GetInventoryRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetInventoryRequest" xmlns:ns16="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns17:&gt;UpdateTRResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.UpdateTRResponse" xmlns:ns17="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns18:&gt;GetEntryRBRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetEntryRBRequest" xmlns:ns18="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns19:&gt;SearchInventoryResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.SearchInventoryResponse" xmlns:ns19="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns20:&gt;InsertHeldTRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertHeldTRequest" xmlns:ns20="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns21:&gt;CheckUserRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CheckUserRequest" xmlns:ns21="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns22:&gt;InsertHeldTResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertHeldTResponse" xmlns:ns22="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns23:&gt;UpdateBRResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.UpdateBRResponse" xmlns:ns23="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns24:&gt;SearchInventoryRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.SearchInventoryRequest" xmlns:ns24="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns25:&gt;InsertBRRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertBRRequest" xmlns:ns25="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns26:&gt;CheckHeldTResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CheckHeldTResponse" xmlns:ns26="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns27:&gt;InsertSoldResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertSoldResponse" xmlns:ns27="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns28:&gt;InsertBRResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertBRResponse" xmlns:ns28="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns29:&gt;InsertReturnItemResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertReturnItemResponse" xmlns:ns29="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns30:&gt;OpenCancelledTRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.OpenCancelledTRequest" xmlns:ns30="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns31:PosGWAppSetting" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWAppSetting" xmlns:ns31="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns32:&gt;GetEntryRJResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetEntryRJResponse" xmlns:ns32="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns33:&gt;InsertHeldItemResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertHeldItemResponse" xmlns:ns33="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns34:&gt;ClosePendingTRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.ClosePendingTRequest" xmlns:ns34="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns35:&gt;ClosePendingTResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.ClosePendingTResponse" xmlns:ns35="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns36:&gt;InsertReturnItemRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertReturnItemRequest" xmlns:ns36="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns37:PosGWUser" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWUser" xmlns:ns37="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns38:&gt;GetReceiptSettingsRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetReceiptSettingsRequest" xmlns:ns38="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns39:PosGWTransaction" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWTransaction" xmlns:ns39="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns40:&gt;UpdateTRRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.UpdateTRRequest" xmlns:ns40="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns41:&gt;ChangeSettingResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.ChangeSettingResponse" xmlns:ns41="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns42:PosGWHoldTransaction" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWHoldTransaction" xmlns:ns42="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns43:PosGWCartItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWCartItem" xmlns:ns43="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns44:&gt;InsertTRResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertTRResponse" xmlns:ns44="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns45:&gt;UpdateInventoryRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.UpdateInventoryRequest" xmlns:ns45="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns46:&gt;GetTransactionsRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetTransactionsRequest" xmlns:ns46="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns47:&gt;CancelTransactionResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CancelTransactionResponse" xmlns:ns47="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns48:&gt;CheckExistingHeldTRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CheckExistingHeldTRequest" xmlns:ns48="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns49:&gt;CreateTKResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CreateTKResponse" xmlns:ns49="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns50:&gt;CheckHeldTRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CheckHeldTRequest" xmlns:ns50="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns51:&gt;InsertTRRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertTRRequest" xmlns:ns51="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns52:&gt;GetHeldItemsRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetHeldItemsRequest" xmlns:ns52="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns53:&gt;GetEntryRBResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.GetEntryRBResponse" xmlns:ns53="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns54:&gt;OpenCancelledTResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.OpenCancelledTResponse" xmlns:ns54="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns55:&gt;MakeSaleRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.MakeSaleRequest" xmlns:ns55="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns56:&gt;InsertSoldRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.InsertSoldRequest" xmlns:ns56="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns57:PosGWReturnItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.PosGWReturnItem" xmlns:ns57="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns58:&gt;CancelTransactionRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.CancelTransactionRequest" xmlns:ns58="http://satlujwe.pos.com/PosGW"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns59:&gt;VoidInvoiceRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.pos.satlujwe.PosGW.VoidInvoiceRequest" xmlns:ns59="http://satlujwe.pos.com/PosGW"/>
+  <ns1:arrayMapping innerType="ns60:PosGWHoldItem" languageSpecificType="java:com.pos.satlujwe.PosGW.PosGWHoldItem[]" qname="ns60:GetHeldItemsResponse" xmlns:ns60="http://satlujwe.pos.com/PosGW"/>
+  <ns1:arrayMapping innerType="ns61:PosGWProduct" languageSpecificType="java:com.pos.satlujwe.PosGW.PosGWProduct[]" qname="ns61:GetInventoryResponse" xmlns:ns61="http://satlujwe.pos.com/PosGW"/>
+  <ns1:arrayMapping innerType="ns62:PosGWHoldTransaction" languageSpecificType="java:com.pos.satlujwe.PosGW.PosGWHoldTransaction[]" qname="ns62:GetHeldTResponse" xmlns:ns62="http://satlujwe.pos.com/PosGW"/>
+  <ns1:arrayMapping innerType="ns63:PosGWAppSetting" languageSpecificType="java:com.pos.satlujwe.PosGW.PosGWAppSetting[]" qname="ns63:GetAllSettingsResponse" xmlns:ns63="http://satlujwe.pos.com/PosGW"/>
+  <ns1:arrayMapping innerType="ns64:PosGWTransaction" languageSpecificType="java:com.pos.satlujwe.PosGW.PosGWTransaction[]" qname="ns64:GetTransactionsResponse" xmlns:ns64="http://satlujwe.pos.com/PosGW"/>
+  <ns1:arrayMapping innerType="ns65:PosGWAppSetting" languageSpecificType="java:com.pos.satlujwe.PosGW.PosGWAppSetting[]" qname="ns65:GetReceiptSettingsResponse" xmlns:ns65="http://satlujwe.pos.com/PosGW"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

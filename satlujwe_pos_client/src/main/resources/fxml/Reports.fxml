@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.ReportsController">
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="btnExportToCSV" mnemonicParsing="false" onAction="#exportToCSVAction" text="Export to CSV" />
+            <Button fx:id="btnExportToPDF" mnemonicParsing="false" onAction="#exportToPDFAction" text="Export to PDF" />
+        </items>
+      </ToolBar>
+   </bottom>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Sales">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#overallSalesReportAction" text="Overall Sales" />
+                  <MenuItem mnemonicParsing="false" onAction="#cashierSalesReportAction" text="Cashier Sales" />
+                  <MenuItem mnemonicParsing="false" onAction="#productSalesReportAction" text="Product Sales" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Inventory">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#inventoryMenuItemAction" text="Product Inventory" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Time Keeping">
+               <items>
+                  <MenuItem onAction="#timekeepingTodayMenuItemAction" mnemonicParsing="false" text="Timekeeping for Today" />
+                  <MenuItem onAction="#timekeepingSpecDayMenuItemAction" mnemonicParsing="false" text="Timekeeping for Specific Day" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="tblReport" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

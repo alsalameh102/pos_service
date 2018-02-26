@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://satlujwe.pos.com/PosGW" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://satlujwe.pos.com/PosGW">
+    
+			
+	<!-- For TimeKeeping -->
+		
+	<xsd:element name="InsertTRRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="CurrentUser" type="tns:PosGWUser"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="InsertTRResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+		
+	<xsd:element name="UpdateTRRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="EntryID" type="xsd:int"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="UpdateTRResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="InsertBRRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="CurrentUser" type="tns:PosGWUser"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="InsertBRResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    	
+		<xsd:element name="UpdateBRRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="EntryID" type="xsd:int"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="UpdateBRResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="GetEntryRJRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="UserID" type="xsd:int"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetEntryRJResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="EntryID" type="xsd:int"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    	
+	<xsd:element name="GetEntryRBRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="UserID" type="xsd:int"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetEntryRBResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="EntryID" type="xsd:int"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+		
+
+		
+	<!-- For Inventory -->
+	
+	<xsd:element name="GetInventoryRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetInventoryResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element maxOccurs="unbounded" minOccurs="0" name="ProductItem" type="tns:PosGWProduct"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="UpdateInventoryRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="ItemCode" type="xsd:string"/>
+		  <xsd:element name="Stock" type="xsd:decimal"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="UpdateInventoryResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="SearchInventoryRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="ItemCode" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="SearchInventoryResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="ProductSearched" type="tns:PosGWProduct"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="InsertSoldRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="ItemsSold" type="tns:PosGWSoldItem"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="InsertSoldResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<!-- For Reports -->
+	
+	<xsd:element name="GetSalesReportRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetSalesReportResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="GetTKReportRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetTKReportResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<!-- For Transactions -->
+	
+	<xsd:element name="MakeSaleRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="Sale" type="tns:PosGWTransaction"/>
+		  <xsd:element maxOccurs="unbounded" minOccurs="0" name="Items" type="tns:PosGWCartItem"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="MakeSaleResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+		<xsd:element name="GetTransactionsRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="Type" type="xsd:int"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetTransactionsResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element maxOccurs="unbounded" minOccurs="0" name="Transactions" type="tns:PosGWTransaction"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="CheckHeldTRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="CheckHeldTResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="CheckExistingHeldTRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="HeldID" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="CheckExistingHeldTResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="InsertHeldTRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="HeldTrans" type="tns:PosGWHoldTransaction"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="InsertHeldTResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="GetHeldTRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetHeldTResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element maxOccurs="unbounded" name="HeldTransactions" type="tns:PosGWHoldTransaction"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="GetHeldItemsRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="HeldID" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetHeldItemsResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element maxOccurs="unbounded" name="HeldItems" type="tns:PosGWHoldItem"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="InsertHeldItemRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		<xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="HeldItem" type="tns:PosGWHoldItem"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="InsertHeldItemResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="CancelTransactionRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="HeldID" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="CancelTransactionResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="OpenCancelledTRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="HeldID" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="OpenCancelledTResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ClosePendingTRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="HeldID" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="ClosePendingTResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<!-- For User Validation -->
+		
+	<xsd:element name="CheckUserRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="UserName" type="xsd:string"/>
+		  <xsd:element name="Password" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="CheckUserResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="User" type="tns:PosGWUser"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>	
+	
+
+<!-- For App Settings -->
+		
+	<xsd:element name="GetAllSettingsRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetAllSettingsResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element maxOccurs="unbounded" name="AppSettings" type="tns:PosGWAppSetting"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>	
+
+	<xsd:element name="GetReceiptSettingsRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="GetReceiptSettingsResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element maxOccurs="unbounded" name="ReceiptSettings" type="tns:PosGWAppSetting"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>	
+
+	<xsd:element name="ChangeSettingRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element maxOccurs="unbounded" name="ReceiptSettings" type="tns:PosGWAppSetting"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="ChangeSettingResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>	
+
+
+<!-- For Return -->
+
+	<xsd:element name="InsertReturnItemRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		<xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="ReturnItem" type="tns:PosGWReturnItem"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="InsertReturnItemResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+
+
+<!-- For Void Invoice -->
+
+	<xsd:element name="VoidInvoiceRequest">
+	  <xsd:complexType>
+		<xsd:sequence>
+		<xsd:element name="InventorySpace" type="xsd:string"/>
+		  <xsd:element name="VoidInvoice" type="tns:PosGWVoidInvoice"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+    
+	<xsd:element name="VoidInvoiceResponse">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="isSuccess" type="xsd:boolean"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+
+
+	<!-- OBJECTS -->
+	
+	
+	  <xsd:complexType name="PosGWUser">
+		<xsd:sequence>
+		  <xsd:element name="UserID" type="xsd:int"/>
+		  <xsd:element name="FirstName" type="xsd:string"/>
+		  <xsd:element name="LastName" type="xsd:string"/>
+		  <xsd:element name="Email" type="xsd:string"/>
+		  <xsd:element name="Username" type="xsd:string"/>
+		  <xsd:element name="Password" type="xsd:string"/>
+		  <xsd:element name="Role" type="xsd:string"/>
+		  <xsd:element name="ActivationKey" type="xsd:string"/>
+		  <xsd:element name="ResetKey" type="xsd:string"/>
+		  <xsd:element name="emailStatus" type="xsd:string"/>
+		  <xsd:element name="userStatus" type="xsd:string"/>
+		  <xsd:element name="dateCreated" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+
+		
+	  <xsd:complexType name="PosGWProduct">
+		<xsd:sequence>
+		  <xsd:element name="ID" type="xsd:int"/>
+		  <xsd:element name="ProductIMG" type="xsd:string"/>
+		  <xsd:element name="ProductName" type="xsd:string"/>
+		  <xsd:element name="SKU" type="xsd:string"/>
+		  <xsd:element name="ItemCode" type="xsd:string"/>
+		  <xsd:element name="Vendor" type="xsd:int"/>
+		  <xsd:element name="PurchasePrice" type="xsd:decimal"/>
+		  <xsd:element name="RetailPrice" type="xsd:decimal"/>
+		  <xsd:element name="Aisle" type="xsd:int"/>
+		  <xsd:element name="Perishable" type="xsd:string"/>
+		  <xsd:element name="SubCategory" type="xsd:string"/>
+		  <xsd:element name="QtyOnFloor" type="xsd:int"/>
+		  <xsd:element name="ShelfLifeOnFloor" type="xsd:int"/>
+		  <xsd:element name="QtyOffFloor" type="xsd:int"/>
+		  <xsd:element name="ShelfLifeOffFloor" type="xsd:int"/>
+		  <xsd:element name="Tax" type="xsd:string"/>
+		  <xsd:element name="Taxable" type="xsd:string"/>
+		  <xsd:element name="Coupon" type="xsd:string"/>
+		  <xsd:element name="Remarks" type="xsd:string"/>
+		  <xsd:element name="CreatedAt" type="xsd:string"/>
+		  <xsd:element name="UpdatedAt" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+
+
+	  <xsd:complexType name="PosGWSoldItem">
+		<xsd:sequence>
+		  <xsd:element name="ID" type="xsd:int"/>
+		  <xsd:element name="InvoiceNum" type="xsd:string"/>
+		  <xsd:element name="ProdName" type="xsd:string"/>
+		  <xsd:element name="ItemCode" type="xsd:string"/>
+		  <xsd:element name="Sku" type="xsd:string"/>
+		  <xsd:element name="PurchasePrice" type="xsd:decimal"/>
+		  <xsd:element name="Qty" type="xsd:int"/>
+		  <xsd:element name="Remarks" type="xsd:string"/>
+		  <xsd:element name="SoldDate" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+
+	  <xsd:complexType name="PosGWTransaction">
+		<xsd:sequence>
+		  <xsd:element name="ID" type="xsd:int"/>
+		  <xsd:element name="InvoiceNum" type="xsd:string"/>
+		  <xsd:element name="Cashier" type="xsd:string"/>
+		  <xsd:element name="Type" type="xsd:string"/>
+		  <xsd:element name="WasHeld" type="xsd:string"/>
+		  <xsd:element name="Name" type="xsd:string"/>
+		  <xsd:element name="Change" type="xsd:decimal"/>
+		  <xsd:element name="Balance" type="xsd:decimal"/>
+		  <xsd:element name="SubTotal" type="xsd:decimal"/>
+		  <xsd:element name="TotalAmount" type="xsd:decimal"/>
+		  <xsd:element name="CashTendered" type="xsd:decimal"/>
+		  <xsd:element name="Month" type="xsd:string"/>
+		  <xsd:element name="Year" type="xsd:string"/>
+		  <xsd:element name="VAT" type="xsd:string"/>
+		  <xsd:element name="TimeStamp" type="xsd:string"/>
+		 
+		</xsd:sequence>
+	  </xsd:complexType>
+	
+	  <xsd:complexType name="PosGWHoldTransaction">
+		<xsd:sequence>
+		  <xsd:element name="ID" type="xsd:int"/>
+		  <xsd:element name="UserID" type="xsd:string"/>
+		  <xsd:element name="HeldID" type="xsd:string"/>
+		  <xsd:element name="InvoiceNum" type="xsd:string"/>
+		  <xsd:element name="Loggedby" type="xsd:string"/>
+		  <xsd:element name="CreatedAt" type="xsd:string"/>
+		  <xsd:element name="SoldAt" type="xsd:string"/>
+		  <xsd:element name="Status" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	
+	  <xsd:complexType name="PosGWHoldItem">
+		<xsd:sequence>
+		  <xsd:element name="heldID" type="xsd:string"/>
+		  <xsd:element name="ItemCode" type="xsd:string"/>
+		  <xsd:element name="Qty" type="xsd:int"/>
+		  <xsd:element name="CreatedAt" type="xsd:string"/>
+		  <xsd:element name="Status" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	  
+	  <xsd:complexType name="PosGWReturnItem">
+		<xsd:sequence>
+		  <xsd:element name="returnID" type="xsd:string"/>
+		  <xsd:element name="UserID" type="xsd:string"/>
+		  <xsd:element name="InvoiceNum" type="xsd:string"/>
+		  <xsd:element name="ItemCode" type="xsd:string"/>
+		  <xsd:element name="Qty" type="xsd:int"/>
+		  <xsd:element name="Loggedby" type="xsd:string"/>
+		  <xsd:element name="CreatedAt" type="xsd:string"/>
+		  <xsd:element name="Status" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	  
+	  <xsd:complexType name="PosGWCartItem">
+		<xsd:sequence>
+		  <xsd:element name="orderNo" type="xsd:int"/>
+		  <xsd:element name="Desc" type="xsd:string"/>
+		  <xsd:element name="InvoiceNum" type="xsd:string"/>
+		  <xsd:element name="ItemCode" type="xsd:string"/>
+		  <xsd:element name="Qty" type="xsd:int"/>
+		  <xsd:element name="totalPrice" type="xsd:decimal"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	  
+	  <xsd:complexType name="PosGWVoidInvoice">
+		<xsd:sequence>
+		  <xsd:element name="id" type="xsd:int"/>
+		  <xsd:element name="InvoiceNum" type="xsd:string"/>
+		  <xsd:element name="UserID" type="xsd:string"/>
+		  <xsd:element name="Loggedby" type="xsd:string"/>
+		  <xsd:element name="CreatedAt" type="xsd:string"/>
+		  <xsd:element name="Status" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	  
+	   <xsd:complexType name="PosGWAppSetting">
+		<xsd:sequence>
+		  <xsd:element name="id" type="xsd:int"/>
+		  <xsd:element name="settingName" type="xsd:string"/>
+		  <xsd:element name="settingValue" type="xsd:string"/>
+		  <xsd:element name="settingDesc" type="xsd:string"/>
+		</xsd:sequence>
+	  </xsd:complexType>
+	  
+</xsd:schema>

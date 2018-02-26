@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane id="gridPane" fx:id="gridPane" alignment="CENTER" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.InitController">
+    <stylesheets>
+        <URL value="@../styles/design.css" />
+    </stylesheets>
+    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="10.0" percentWidth="0.0" prefWidth="120.0" />
+      <ColumnConstraints minWidth="10.0" percentWidth="0.0" prefWidth="200.0" />
+      <ColumnConstraints minWidth="10.0" percentWidth="0.0" prefWidth="200.0" />
+   </columnConstraints>
+   <children>
+      <Button fx:id="btnSignIn" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Sign in" onAction="#signInButtonAction" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField fx:id="txtUser" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <PasswordField fx:id="txtPassword" onAction="#signInButtonAction" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Username or ID:" GridPane.rowIndex="2" />
+      <Label text="Password:" GridPane.rowIndex="3" />
+      <Label fx:id="lblStationNo" text="Station #1" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <Label fx:id="lblTimeStamp" text="#TIMESTAMP" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+   </children>
+</GridPane>

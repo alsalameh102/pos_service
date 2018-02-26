@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://satlujwe.pos.com/PosGW" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PosGW" targetNamespace="http://satlujwe.pos.com/PosGW">
+  
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://satlujwe.pos.com/PosGW">
+		<xsd:include schemaLocation="PosGW.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  
+  <!-- For TimeKeeping -->
+  <wsdl:message name="InsertTRRequest">
+    <wsdl:part element="tns:InsertTRRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertTRResponse">
+    <wsdl:part element="tns:InsertTRResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateTRRequest">
+    <wsdl:part element="tns:UpdateTRRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateTRResponse">
+    <wsdl:part element="tns:UpdateTRResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertBRRequest">
+    <wsdl:part element="tns:InsertBRRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertBRResponse">
+    <wsdl:part element="tns:InsertBRResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateBRRequest">
+    <wsdl:part element="tns:UpdateBRRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateBRResponse">
+    <wsdl:part element="tns:UpdateBRResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetEntryRJRequest">
+    <wsdl:part element="tns:GetEntryRJRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetEntryRJResponse">
+    <wsdl:part element="tns:GetEntryRJResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetEntryRBRequest">
+    <wsdl:part element="tns:GetEntryRBRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetEntryRBResponse">
+    <wsdl:part element="tns:GetEntryRBResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <!-- For Inventory -->
+  
+  <wsdl:message name="GetInventoryRequest">
+    <wsdl:part element="tns:GetInventoryRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetInventoryResponse">
+    <wsdl:part element="tns:GetInventoryResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateInventoryRequest">
+    <wsdl:part element="tns:UpdateInventoryRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateInventoryResponse">
+    <wsdl:part element="tns:UpdateInventoryResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="SearchInventoryRequest">
+    <wsdl:part element="tns:SearchInventoryRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="SearchInventoryResponse">
+    <wsdl:part element="tns:SearchInventoryResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertSoldRequest">
+    <wsdl:part element="tns:InsertSoldRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertSoldResponse">
+    <wsdl:part element="tns:InsertSoldResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <!-- For Reports -->
+  
+  <!-- For Transactions -->
+
+  <wsdl:message name="MakeSaleRequest">
+    <wsdl:part element="tns:MakeSaleRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="MakeSaleResponse">
+    <wsdl:part element="tns:MakeSaleResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsRequest">
+    <wsdl:part element="tns:GetTransactionsRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsResponse">
+    <wsdl:part element="tns:GetTransactionsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CheckHeldTRequest">
+    <wsdl:part element="tns:CheckHeldTRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CheckHeldTResponse">
+    <wsdl:part element="tns:CheckHeldTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CheckExistingHeldTRequest">
+    <wsdl:part element="tns:CheckExistingHeldTRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CheckExistingHeldTResponse">
+    <wsdl:part element="tns:CheckExistingHeldTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertHeldTRequest">
+    <wsdl:part element="tns:InsertHeldTRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertHeldTResponse">
+    <wsdl:part element="tns:InsertHeldTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetHeldTRequest">
+    <wsdl:part element="tns:GetHeldTRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetHeldTResponse">
+    <wsdl:part element="tns:GetHeldTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetHeldItemsRequest">
+    <wsdl:part element="tns:GetHeldItemsRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetHeldItemsResponse">
+    <wsdl:part element="tns:GetHeldItemsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertHeldItemRequest">
+    <wsdl:part element="tns:InsertHeldItemRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertHeldItemResponse">
+    <wsdl:part element="tns:InsertHeldItemResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CancelTransactionRequest">
+      <wsdl:part element="tns:CancelTransactionRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CancelTransactionResponse">
+    <wsdl:part element="tns:CancelTransactionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="OpenCancelledTRequest">
+    <wsdl:part element="tns:OpenCancelledTRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="OpenCancelledTResponse">
+    <wsdl:part element="tns:OpenCancelledTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ClosePendingTRequest">
+    <wsdl:part element="tns:ClosePendingTRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ClosePendingTResponse">
+    <wsdl:part element="tns:ClosePendingTResponse" name="parameters"/>
+  </wsdl:message>
+  
+   <!-- For User Validation -->
+  <wsdl:message name="CheckUserRequest">
+    <wsdl:part element="tns:CheckUserRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CheckUserResponse">
+    <wsdl:part element="tns:CheckUserResponse" name="parameters"/>
+  </wsdl:message> 
+   
+  <!-- For App Settings -->
+  <wsdl:message name="GetAllSettingsRequest">
+    <wsdl:part element="tns:GetAllSettingsRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllSettingsResponse">
+    <wsdl:part element="tns:GetAllSettingsResponse" name="parameters"/>
+  </wsdl:message> 
+  <wsdl:message name="GetReceiptSettingsRequest">
+    <wsdl:part element="tns:GetReceiptSettingsRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetReceiptSettingsResponse">
+    <wsdl:part element="tns:GetReceiptSettingsResponse" name="parameters"/>
+  </wsdl:message> 
+  <wsdl:message name="ChangeSettingRequest">
+    <wsdl:part element="tns:ChangeSettingRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ChangeSettingResponse">
+    <wsdl:part element="tns:ChangeSettingResponse" name="parameters"/>
+  </wsdl:message> 
+  
+  <!-- For Return -->
+  <wsdl:message name="InsertReturnItemRequest">
+    <wsdl:part element="tns:InsertReturnItemRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InsertReturnItemResponse">
+    <wsdl:part element="tns:InsertReturnItemResponse" name="parameters"/>
+  </wsdl:message> 
+  
+  
+  <!-- For Void Invoice -->
+  <wsdl:message name="VoidInvoiceRequest">
+    <wsdl:part element="tns:VoidInvoiceRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="VoidInvoiceResponse">
+    <wsdl:part element="tns:VoidInvoiceResponse" name="parameters"/>
+  </wsdl:message> 
+  
+  
+  <wsdl:portType name="PosGW_PortType">
+  <!-- For TimeKeeping -->
+	<wsdl:operation name="TK_InsertTR">
+      <wsdl:input message="tns:InsertTRRequest"/>
+      <wsdl:output message="tns:InsertTRResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="TK_UpdateTR">
+      <wsdl:input message="tns:UpdateTRRequest"/>
+      <wsdl:output message="tns:UpdateTRResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="TK_InsertBR">
+      <wsdl:input message="tns:InsertBRRequest"/>
+      <wsdl:output message="tns:InsertBRResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="TK_UpdateBR">
+      <wsdl:input message="tns:UpdateBRRequest"/>
+      <wsdl:output message="tns:UpdateBRResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="TK_GetRJEntry">
+      <wsdl:input message="tns:GetEntryRJRequest"/>
+      <wsdl:output message="tns:GetEntryRJResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="TK_GetEntryRB">
+      <wsdl:input message="tns:GetEntryRBRequest"/>
+      <wsdl:output message="tns:GetEntryRBResponse"/>
+    </wsdl:operation>
+	
+  <!-- For Inventory -->
+  
+    <wsdl:operation name="GetInventory">
+      <wsdl:input message="tns:GetInventoryRequest"/>
+      <wsdl:output message="tns:GetInventoryResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="UpdateInventory">
+      <wsdl:input message="tns:UpdateInventoryRequest"/>
+      <wsdl:output message="tns:UpdateInventoryResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="SearchInventory">
+      <wsdl:input message="tns:SearchInventoryRequest"/>
+      <wsdl:output message="tns:SearchInventoryResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="InsertSold">
+      <wsdl:input message="tns:InsertSoldRequest"/>
+      <wsdl:output message="tns:InsertSoldResponse"/>
+    </wsdl:operation>
+  
+  <!-- For Transactions -->
+  
+    <wsdl:operation name="MakeSale">
+      <wsdl:input message="tns:MakeSaleRequest"/>
+      <wsdl:output message="tns:MakeSaleResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactions">
+      <wsdl:input message="tns:GetTransactionsRequest"/>
+      <wsdl:output message="tns:GetTransactionsResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="CheckHeld">
+      <wsdl:input message="tns:CheckHeldTRequest"/>
+      <wsdl:output message="tns:CheckHeldTResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="CheckExistingHeld">
+      <wsdl:input message="tns:CheckExistingHeldTRequest"/>
+      <wsdl:output message="tns:CheckExistingHeldTResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="InsertHeld">
+      <wsdl:input message="tns:InsertHeldTRequest"/>
+      <wsdl:output message="tns:InsertHeldTResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="GetHeld">
+      <wsdl:input message="tns:GetHeldTRequest"/>
+      <wsdl:output message="tns:GetHeldTResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="GetHeldItems">
+      <wsdl:input message="tns:GetHeldItemsRequest"/>
+      <wsdl:output message="tns:GetHeldItemsResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="InsertHeldItems">
+      <wsdl:input message="tns:InsertHeldItemRequest"/>
+      <wsdl:output message="tns:InsertHeldItemResponse"/>
+    </wsdl:operation>
+  	<wsdl:operation name="CancelTransaction">
+      <wsdl:input message="tns:CancelTransactionRequest"/>
+      <wsdl:output message="tns:CancelTransactionResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="OpenCancelled">
+      <wsdl:input message="tns:OpenCancelledTRequest"/>
+      <wsdl:output message="tns:OpenCancelledTResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="ClosePending">
+      <wsdl:input message="tns:ClosePendingTRequest"/>
+      <wsdl:output message="tns:ClosePendingTResponse"/>
+    </wsdl:operation>
+  
+  <!-- For UserValidation -->
+    <wsdl:operation name="UserValidation">
+      <wsdl:input message="tns:CheckUserRequest"/>
+      <wsdl:output message="tns:CheckUserResponse"/>
+    </wsdl:operation>
+
+  
+  <!-- For App Settings -->
+  	<wsdl:operation name="GetAllSettings">
+      <wsdl:input message="tns:GetAllSettingsRequest"/>
+      <wsdl:output message="tns:GetAllSettingsResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="GetReceiptSettings">
+      <wsdl:input message="tns:GetReceiptSettingsRequest"/>
+      <wsdl:output message="tns:GetReceiptSettingsResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="ChangeSetting">
+      <wsdl:input message="tns:ChangeSettingRequest"/>
+      <wsdl:output message="tns:ChangeSettingResponse"/>
+    </wsdl:operation>
+  
+  
+  <!-- For Return -->
+  	<wsdl:operation name="InsertReturnItem">
+      <wsdl:input message="tns:InsertReturnItemRequest"/>
+      <wsdl:output message="tns:InsertReturnItemResponse"/>
+    </wsdl:operation>
+  
+  
+  <!-- For Void Invoice -->
+  	<wsdl:operation name="VoidInvoice">
+      <wsdl:input message="tns:VoidInvoiceRequest"/>
+      <wsdl:output message="tns:VoidInvoiceResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  
+  <wsdl:binding name="PosGW_Binding" type="tns:PosGW_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+	
+	<wsdl:operation name="TK_InsertTR">
+      <soap:operation soapAction="http://www.examples.com/PosGW/TK_InsertTR"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="TK_UpdateTR">
+      <soap:operation soapAction="http://www.examples.com/PosGW/TK_UpdateTR"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="TK_InsertBR">
+      <soap:operation soapAction="http://www.examples.com/PosGW/TK_InsertBR"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="TK_UpdateBR">
+      <soap:operation soapAction="http://www.examples.com/PosGW/TK_UpdateBR"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="TK_GetRJEntry">
+      <soap:operation soapAction="http://www.examples.com/PosGW/TK_GetRJEntry"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="TK_GetEntryRB">
+      <soap:operation soapAction="http://www.examples.com/PosGW/TK_GetEntryRB"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="GetInventory">
+      <soap:operation soapAction="http://www.examples.com/PosGW/GetInventory"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="UpdateInventory">
+      <soap:operation soapAction="http://www.examples.com/PosGW/UpdateInventory"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="SearchInventory">
+      <soap:operation soapAction="http://www.examples.com/PosGW/SearchInventory"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="InsertSold">
+      <soap:operation soapAction="http://www.examples.com/PosGW/InsertSold"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="MakeSale">
+      <soap:operation soapAction="http://www.examples.com/PosGW/MakeSale"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="GetTransactions">
+      <soap:operation soapAction="http://www.examples.com/PosGW/GetTransactions"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="CheckHeld">
+      <soap:operation soapAction="http://www.examples.com/PosGW/CheckHeld"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="CheckExistingHeld">
+      <soap:operation soapAction="http://www.examples.com/PosGW/CheckExistingHeld"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="InsertHeld">
+      <soap:operation soapAction="http://www.examples.com/PosGW/InsertHeld"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="GetHeld">
+      <soap:operation soapAction="http://www.examples.com/PosGW/GetHeld"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="GetHeldItems">
+      <soap:operation soapAction="http://www.examples.com/PosGW/GetHeldItems"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="InsertHeldItems">
+      <soap:operation soapAction="http://www.examples.com/PosGW/InsertHeldItems"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="CancelTransaction">
+      <soap:operation soapAction="http://www.examples.com/PosGW/CancelTransaction"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="OpenCancelled">
+      <soap:operation soapAction="http://www.examples.com/PosGW/OpenCancelled"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="ClosePending">
+      <soap:operation soapAction="http://www.examples.com/PosGW/ClosePending"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="UserValidation">
+      <soap:operation soapAction="http://www.examples.com/PosGW/UserValidation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+
+	<wsdl:operation name="GetAllSettings">
+      <soap:operation soapAction="http://www.examples.com/PosGW/GetAllSettings"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="GetReceiptSettings">
+      <soap:operation soapAction="http://www.examples.com/PosGW/GetReceiptSettings"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="ChangeSetting">
+      <soap:operation soapAction="http://www.examples.com/PosGW/ChangeSetting"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="InsertReturnItem">
+      <soap:operation soapAction="http://www.examples.com/PosGW/InsertReturnItem"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	<wsdl:operation name="VoidInvoice">
+      <soap:operation soapAction="http://www.examples.com/PosGW/VoidInvoice"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	
+	
+  </wsdl:binding>
+  <wsdl:service name="PosGW">
+    <wsdl:port binding="tns:PosGW_Binding" name="PosGW_Port">
+      <soap:address location="http://localhost:8080/pos_webservice/services/PosGW_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Log4j Configuration                                                  -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: log4j.xml,v 1.5 2005/06/19 15:11:54 chino Exp $ -->
+
+<!--
+   | For more configuration infromation and examples see the Jakarta Log4j
+   | owebsite: http://jakarta.apache.org/log4j
+ -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<!-- ================================= -->
+	<!-- Preserve messages in a local file -->
+	<!-- ================================= -->
+
+   	<!-- A time/date based rolling appender -->
+	<appender name="POS" class="org.apache.log4j.DailyRollingFileAppender">
+		<errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="File" value="logs/pos_log.log" />
+		<param name="Append" value="true" />
+		<param name="Threshold" value="trace" />
+
+		<!-- Rollover per hour -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n" />
+		</layout>
+		
+		<!--<filter class="org.apache.log4j.varia.StringMatchFilter">
+			<param name="StringToMatch" value="SOAP-ENV" />
+			<param name="AcceptOnMatch" value="false" />
+		</filter>
+			<filter class="org.apache.log4j.varia.StringMatchFilter">
+			<param name="StringToMatch" value="soapenv" />
+			<param name="AcceptOnMatch" value="false" />
+		</filter>-->
+	</appender>
+
+
+	<appender name="REQRES" class="org.apache.log4j.DailyRollingFileAppender">
+		<errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<!-- REPLACE [SE_ID] WITH ACTUAL SE ID -->
+		<param name="File" value="logs/reqres_log.log" />
+		<param name="Append" value="true" />
+		<param name="Threshold" value="trace" />
+
+		<!-- Rollover per hour -->
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+
+		<!-- Rollover at the top of each hour -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+			<!--
+				The full pattern: Date MS Priority [Category] (Thread:NDC) Message\n
+			-->
+		</layout>
+		<filter class="org.apache.log4j.varia.StringMatchFilter">
+			<param name="StringToMatch" value="SOAP-ENV" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+			<filter class="org.apache.log4j.varia.StringMatchFilter">
+			<param name="StringToMatch" value="soapenv" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	
+	<!-- ============================== -->
+	<!-- Append messages to the console -->
+	<!-- ============================== -->
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="trace" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- ================ -->
+	<!-- Limit categories -->
+	<!-- ================ -->
+	<!--<category name="ph.com.smart.eai.eload">
+		<priority value="INFO" />
+	</category>
+	<category name="ph.com.smart.eai.eload.server.RequestProcessor">
+		<priority value="DEBUG" />
+	</category>
+	<category name="ph.com.smart.eai.eload.common.ECMapping">
+		<priority value="TRACE"/>
+	</category>
+	<category name="org.apache.http.header">
+		<priority value="WARN" />
+	</category>
+	<category name="org.apache.http.wire">
+		<priority value="DEBUG" />
+	</category>
+	<category name="org.springframework">
+		<priority value="ERROR" />
+	</category>
+	<category name="org.jboss.netty">
+		<priority value="ERROR" />
+	</category>
+	<category name="org.apache.http">
+		<priority value="ERROR"/>
+	</category>-->
+
+	<!-- ======================= -->
+	<!-- Setup the Root category -->
+	<!-- ======================= -->
+	<root>
+		<appender-ref ref="REQRES" />
+		<appender-ref ref="POS" />
+ 		<appender-ref ref="CONSOLE" />
+	</root>
+
+</log4j:configuration>

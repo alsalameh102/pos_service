@@ -1,0 +1,76 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:tx = "http://www.springframework.org/schema/tx"
+   xmlns:aop = "http://www.springframework.org/schema/aop"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd 
+   http://www.springframework.org/schema/tx
+   http://www.springframework.org/schema/tx/spring-tx.xsd
+   http://www.springframework.org/schema/aop
+   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+   <!-- Initialization for data source -->
+   <bean id="dataSource" 
+      class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name = "driverClassName" value = "com.mysql.cj.jdbc.Driver"/>
+      <property name = "url" value = "jdbc:mysql://localhost:3306/satlujwe_pos3?verifyServerCertificate=false&amp;useSSL=true&amp;zeroDateTimeBehavior=convertToNull&amp;useLegacyDatetimeCode=false"/>
+      <property name = "username" value = "root"/>
+      <property name = "password" value = "root"/>
+   </bean>
+  
+   <tx:advice id = "txAdvice" transaction-manager = "transactionManager">
+      <tx:attributes>
+      <tx:method name = "txmakeSale"/>
+      </tx:attributes>
+   </tx:advice>
+	
+   <aop:config>
+      <aop:pointcut id = "allServices" 
+         expression = "execution(* db.template.TransactionTemplate.txmakeSale(..))"/>
+      <aop:advisor advice-ref = "txAdvice" pointcut-ref = "allServices"/>
+   </aop:config>
+	
+   <!-- Initialization for TransactionManager -->
+   <bean id = "transactionManager"
+      class = "org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name = "dataSource" ref = "dataSource" />    
+   </bean>
+			
+   <!-- Definition for appSettingsTemplate bean -->
+   <bean id = "appSettingsTemplate"  
+      class = "db.template.AppSettingsTemplate">
+      <property name = "dataSource" ref = "dataSource"/>  
+   </bean>
+   
+   <bean id = "inventoryTemplate"  
+      class = "db.template.InventoryTemplate">
+      <property name = "dataSource" ref = "dataSource"/>  
+   </bean>
+   
+   <bean id = "returnItemTemplate"  
+      class = "db.template.ReturnItemTemplate">
+      <property name = "dataSource" ref = "dataSource"/>  
+   </bean>
+   
+   <bean id = "timekeepingTemplate"  
+      class = "db.template.TimeKeepingTemplate">
+      <property name = "dataSource" ref = "dataSource"/>  
+   </bean>
+   
+   <bean id = "transactionTemplate"  
+      class = "db.template.TransactionTemplate">
+      <property name = "dataSource" ref = "dataSource"/>  
+   </bean>
+   
+   <bean id = "userTemplate"  
+      class = "db.template.UserTemplate">
+      <property name = "dataSource" ref = "dataSource"/>  
+   </bean>
+
+	<bean id = "voidInvoiceTemplate"  
+      class = "db.template.VoidInvoiceTemplate">
+      <property name = "dataSource" ref = "dataSource"/>  
+   </bean>
+
+</beans>

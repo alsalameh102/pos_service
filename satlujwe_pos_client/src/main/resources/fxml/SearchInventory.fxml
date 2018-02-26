@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox id="searchInventory" alignment="CENTER" prefHeight="636.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.SearchInventoryController">
+   <children>
+      <GridPane hgap="10.0" prefHeight="576.0" prefWidth="831.0" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="754.0" minWidth="10.0" prefWidth="754.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="451.0" minWidth="10.0" prefWidth="67.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="471.0" minHeight="10.0" prefHeight="471.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="402.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView fx:id="tblItemSearch" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="colItemCode" editable="false" prefWidth="75.0" text="Item Code" />
+                <TableColumn fx:id="colDesc" editable="false" prefWidth="391.0" text="Description" />
+                  <TableColumn fx:id="colPrice" prefWidth="55.0" resizable="false" text="Price" />
+                  <TableColumn fx:id="colQuantity" editable="false" prefWidth="59.0" resizable="false" text="Stock" />
+                  <TableColumn fx:id="colRemarks" editable="false" prefWidth="173.0" text="Remarks" />
+              </columns>
+            </TableView>
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane hgap="10.0" vgap="10.0" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <RadioButton fx:id="radioItemCode" mnemonicParsing="false" text="Item Code" />
+                        <RadioButton fx:id="radioDesc" mnemonicParsing="false" text="Description" GridPane.columnIndex="1" />
+                        <Button fx:id="btnSelect" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Select" GridPane.columnIndex="1" onAction="#selectButtonAction" GridPane.rowIndex="1" />
+                        <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Cancel" GridPane.columnIndex="2" onAction="#cancelButtonAction" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtSearch" prefHeight="7.0" prefWidth="188.0" GridPane.columnIndex="3" />
+                        <Label alignment="CENTER" text="Enter Search Text:" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ComboBox fx:id="comboCat" prefHeight="25.0" prefWidth="249.0" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="comboAisle" prefHeight="25.0" prefWidth="249.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="comboVendor" prefHeight="25.0" prefWidth="249.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text="Category" />
+                        <Label text="Department/Aisle" GridPane.columnIndex="1" />
+                        <Label text="Vendor" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</HBox>
